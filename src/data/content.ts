@@ -57,7 +57,7 @@ export const hero = {
   ctaSecondary: 'Fale com um especialista',
   banner: {
     src: heroBg,
-    alt: 'Filtros, válvulas, correias e outras peças para compressores de parafuso diante de um compressor',
+    alt: 'Rotor de parafuso, filtros, válvulas, correias e outras peças para compressores diante de um compressor',
   },
   points: [
     { icon: 'shield', line1: 'Suporte técnico', line2: 'especializado' },
