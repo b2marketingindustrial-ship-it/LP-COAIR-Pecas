@@ -6,7 +6,6 @@
  */
 import { Picture } from 'astro:assets'
 import Icon from './Icon.astro'
-import Button from './Button.astro'
 import Eyebrow from './Eyebrow.astro'
 import { hero } from '../data/content'
 
@@ -87,14 +86,8 @@ const hasHighlight = titleRest.length > 0
           {hero.text}
         </p>
 
-        <div class="mt-8 flex flex-wrap items-center gap-x-9 gap-y-4">
-          <Button cta="hero-primary" variant="brand">
-            {hero.ctaPrimary}
-          </Button>
-          <Button cta="hero-secondary" variant="link-light" icon={false}>
-            {hero.ctaSecondary}
-          </Button>
-        </div>
+        {/* Espaço dos botões do banner: saíram a pedido do cliente e o espaço fica vazio */}
+        <div aria-hidden="true" class="mt-8 h-[52px]"></div>
 
         {/* 3 destaques — texto sempre em duas linhas, separados por divisórias */}
         <ul class="hero-points mt-10 flex flex-wrap gap-x-5 gap-y-4 sm:flex-nowrap">
