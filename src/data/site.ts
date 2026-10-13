@@ -14,14 +14,14 @@ export const site = {
   /** URL absoluta da página no ar (entrada 10). Usada em canonical e og:url. */
   url: 'https://www.coair.com.br/pecas/compressores',
   /** Endereço completo com CEP (entrada 9). Footer e JSON-LD. */
-  address: 'São Paulo - SP',
-  /** E-mail comercial exibido no rodapé (veio do layout de referência; confirmar com o cliente). */
-  email: 'comercial@coair.com.br',
+  address: 'Alameda Mercúrio, 164 - American Park Empresarial Nr, Indaiatuba - SP, 13347-662',
+  /** E-mail comercial exibido no rodapé (o mesmo das LPs de Locação, Manutenção e Compressores). */
+  email: 'contato@coair.com.br',
   /** Cidade e UF exibidas no rodapé (o endereço completo continua em `address`, para o JSON-LD). */
-  city: 'São Paulo - SP',
+  city: 'Indaiatuba - SP',
   /** Página da empresa no LinkedIn. Vazio esconde o ícone do rodapé. */
   linkedin: '',
-  /** Link da política de privacidade do cliente (entrada 10). Vazio esconde o link, mas a nota de LGPD continua. */
+  /** Link da política de privacidade do cliente (entrada 10). Sem uso na página desde 13/10/2026: o link ficava na nota de LGPD da cotação, removida como nas LPs de Locação e Manutenção. */
   privacyUrl: '',
   /** Versão do padrão B2 que esta LP segue. Não editar manualmente; vem do template. */
   standardVersion: '2.7.1',

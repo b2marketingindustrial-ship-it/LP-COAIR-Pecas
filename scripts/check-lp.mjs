@@ -177,7 +177,8 @@ for (const f of astroFiles) {
 {
   const expect = {
     // COAIR: header no visual do cliente (fixo e translúcido sobre o hero, sem a placa da
-    // logo). A assinatura passa a ser a deste header; o CTA rastreável continua obrigatório.
+    // logo), o mesmo da LP de Manutenção. A assinatura passa a ser a deste header; o CTA
+    // rastreável continua obrigatório.
     'Header.astro': ['fixed inset-x-0 top-0 z-50', 'data-header', 'data-cta="header-cta"'],
     'Hero.astro': [
       'grid-template-columns: minmax(0, 1fr) 270px 300px',
@@ -191,6 +192,7 @@ for (const f of astroFiles) {
       'id="cotacao"',
       'lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]',
       'order-2 w-full lg:order-1',
+      'data-cta="cotacao-whatsapp"',
     ],
     'Footer.astro': [
       'navy-premium border-t border-white/15',
@@ -208,7 +210,9 @@ for (const f of astroFiles) {
       fail(f, 'arquivo da estrutura fixa não existe')
       continue
     }
-    for (const n of needles) if (!s.includes(n)) fail(f, `estrutura fixa alterada: falta "${n}"`)
+    // COAIR: um CTA da estrutura fixa pode vir do <Button cta="…">, que renderiza o data-cta.
+    const has = (n) => s.includes(n) || (n.startsWith('data-cta="') && s.includes(` ${n.slice(5)}`))
+    for (const n of needles) if (!has(n)) fail(f, `estrutura fixa alterada: falta "${n}"`)
   }
 
   // A seção de Cotação é a única que pode trazer o ritmo de fechamento embutido.
@@ -479,7 +483,9 @@ async function checkAssetSpecs(manifest) {
 const FIXED_ASSET_SPECS = [
   { dir: '.', match: 'LOGO', width: 240, height: 200, alpha: true },
   { dir: '.', match: 'heroBg', width: 1981, height: 900, alpha: false },
-  { dir: 'brands', width: 400, height: 160, alpha: null },
+  // COAIR: logos do carrossel recortados no tamanho de cada um (mesma área, proporções
+  // diferentes), e não em telas 400×160; o carrossel mostra cada um na proporção própria.
+  { dir: 'brands', alpha: null },
 ]
 
 function checkExampleContent(files) {

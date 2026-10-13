@@ -20,6 +20,8 @@ export const why = {
   eyebrow: `Por que a ${site.brandShort}`,
   /** Cada item é uma linha do H2 (quebra forçada). */
   titleLines: ['Componentes de alta qualidade,', 'menos paradas e mais vida útil.'],
+  /** Mostra a logo da marca no fim do título (desligada, como na LP de Locação). */
+  titleLogo: false,
   text: `Peças da linha HPP® e componentes multimarcas para compressores de parafuso, com engenharia e laboratório internos. A ${site.brandShort} ajuda a identificar a peça certa para manter o seu ar comprimido em operação.`,
   scene: {
     src: cenario,
@@ -55,6 +57,7 @@ export const why = {
 } as const satisfies {
   eyebrow: string
   titleLines: readonly string[]
+  titleLogo: boolean
   text: string
   scene: Photo
   reasons: readonly [Reason, Reason, Reason, Reason, Reason]

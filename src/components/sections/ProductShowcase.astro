@@ -9,7 +9,7 @@
  *                 em trilho horizontal no mobile e grade no desktop.
  *
  * Visual COAIR: cards brancos com a foto sobre a sombra elíptica, ícone verde,
- * nome e seta, num contêiner mais estreito que o padrão.
+ * nome e seta, na largura da página; carrossel de marcas ao lado do cabeçalho.
  *
  * As duas invariantes do conteúdo são verificadas aqui, no build, porque o
  * `contract` do manifesto não expressa condição entre itens: descrição é tudo ou
@@ -18,6 +18,7 @@
 import { Image } from 'astro:assets'
 import Section from '@components/Section.astro'
 import Icon from '@components/Icon.astro'
+import BrandCarousel from '@components/BrandCarousel.astro'
 import SectionHeader from '@components/SectionHeader.astro'
 import type { SectionProps } from '@lib/layout'
 import { showcase, type ShowcaseGroup, type ShowcaseItem } from '@data/sections/vitrine'
@@ -74,23 +75,32 @@ for (const shelf of shelves) {
   tone={tone}
   rhythm={rhythm}
   container={false}
-  class="relative isolate overflow-hidden"
+  class="relative isolate overflow-hidden pt-(--section-gap)! pb-[calc(var(--section-gap)/2)]!"
 >
-  {/* Visual COAIR: cinza-claro com faixas diagonais suaves no lugar do tom da composição */}
+  {/* Visual COAIR: cinza-claro com faixas diagonais suaves no lugar do tom da composição.
+      Respiro único entre seções (global.css) no lugar do ritmo: o vão até o painel do
+      identificar fica metade aqui, metade lá. */}
   <div aria-hidden="true" class="vitrine-bg pointer-events-none absolute inset-0 -z-10"></div>
 
-  {/* Mais estreito que o contêiner padrão, como no layout de referência */}
-  <div class="mx-auto max-w-[1152px] px-6 lg:px-10">
-    <SectionHeader
-      eyebrow={showcase.eyebrow}
-      title={showcase.title}
-      text={showcase.text}
-      width="2xl"
-      accent="green"
-      shape="dash"
-    />
+  {/* Na largura da página, como as outras seções (1350px úteis) */}
+  <div class="mx-auto max-w-page px-6 lg:px-10">
+    {/* Carrossel de marcas ao lado do cabeçalho, o mesmo da LP de Manutenção */}
+    <div class="flex flex-col gap-8 xl:flex-row xl:items-center xl:gap-12">
+      <SectionHeader
+        eyebrow={showcase.eyebrow}
+        title={showcase.title}
+        text={showcase.text}
+        width="full"
+        accent="green"
+        shape="dash"
+        class="min-w-0 flex-1"
+      />
+      <div class="min-w-0 xl:w-[60%] xl:shrink-0">
+        <BrandCarousel />
+      </div>
+    </div>
 
-    <div class="mt-7 flex flex-col gap-10">
+    <div class="mt-10 flex flex-col gap-10">
       {shelves.map((shelf) => (
         <div data-showcase-shelf>
           {shelf.group && (

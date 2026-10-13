@@ -79,8 +79,8 @@ export const hero = {
 
 export const quote = {
   eyebrow: 'Solicite sua cotação',
-  title:
-    'Fale com quem é especialista em ar comprimido com as melhores condições em peças de manutenção em compressores de parafuso.',
+  /** Versão curta (13/10/2026), no formato das LPs de Locação e Compressores. */
+  title: `Fale com quem entende de ${site.product.toLowerCase()}.`,
   text: 'Informe marca, modelo e código da peça: nossa equipe técnica identifica e cota o item certo, com atendimento B2B no estado de São Paulo. Preencha o formulário ou fale direto conosco pelo WhatsApp.',
   /** O `\n` marca a quebra de linha de cada destaque. */
   trust: [
@@ -88,14 +88,11 @@ export const quote = {
     { icon: 'users', label: 'Equipe Técnica\nInterna' },
     { icon: 'factory', label: 'Atendimento B2B' },
   ],
-  /** Nota de LGPD exibida abaixo do formulário. */
-  lgpd: `Seus dados são usados apenas para responder à sua solicitação de cotação, conforme a LGPD.`,
 } as const satisfies {
   eyebrow: string
   title: string
   text: string
   trust: readonly [TrustItem, TrustItem, TrustItem]
-  lgpd: string
 }
 
 /* ------------------------------------------------------------------ footer */
@@ -103,8 +100,8 @@ export const quote = {
 export const footer = {
   /** Frase da marca ao lado da logo. */
   tagline: 'Peças, soluções e suporte técnico para a máxima performance do seu ar comprimido',
+  /** Nome acessível do bloco de contatos (não aparece na tela). */
   contactLabel: 'Atendimento',
-  quoteLabel: 'Solicite sua cotação',
   quoteButton: 'Solicitar cotação',
   credit: { label: 'B2 Marketing Industrial', url: 'https://b2marketingindustrial.com.br' },
 } as const
